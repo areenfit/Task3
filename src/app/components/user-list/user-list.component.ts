@@ -8,6 +8,7 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-user-list',
@@ -21,12 +22,13 @@ import { RouterOutlet } from '@angular/router';
     PaginationComponent,
     FormsModule,
     RouterOutlet,
+    HeaderComponent,
   ],
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: any[] = [];
   filteredUsers: any[] = [];
-  // selectedUser: any = null;
+  selectedUser: any = null;
   isLoading = true;
   errorMessage: string | null = null;
   itemsPerPage = 5;
@@ -67,7 +69,7 @@ export class UserListComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         error: (error) => {
-          this.errorMessage = error.message;
+          this.errorMessage = 'Failed to fetch users. Please try again later.';
           this.isLoading = false;
         },
       });
@@ -81,9 +83,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
   }
 
-  // selectUser(user: any): void {
-  //   this.selectedUser = user;
-  // }
+  selectUser(user: any): void {
+    this.selectedUser = user;
+  }
 
   onPageChanged(page: number): void {
     if (page >= 1 && page <= this.totalPages) {

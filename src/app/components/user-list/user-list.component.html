@@ -1,3 +1,5 @@
+<app-header (searchId)="handleSearch($event)"></app-header>
+
 <div *ngIf="isLoading">
   <p>Loading users...</p>
 </div>
@@ -22,14 +24,13 @@
       <app-user *ngFor="let user of filteredUsers" [user]="user"></app-user>
     </ul>
   </div>
-  <div>
-    <router-outlet />
-  </div>
+
   <!-- <div class="user-details-container">
     //the details
     <app-user-details
       *ngIf="selectedUser"
       [user]="selectedUser"
+      [id]="selectedUser.id"
     ></app-user-details>
   </div> -->
 </div>

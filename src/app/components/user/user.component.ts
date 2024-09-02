@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -11,9 +12,11 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class UserComponent {
   @Input() user: any;
+
   constructor(private router: Router) {}
 
   viewDetails() {
     this.router.navigate(['/users', this.user.id]);
+    console.log(this.user);
   }
 }

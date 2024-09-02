@@ -1,7 +1,20 @@
-<!-- <div *ngIf="user">
-  <div class="user-details">
-    <img [src]="user.avatar" alt="User Avatar" />
-    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-    <p>Email: {{ user.email }}</p>
+<app-header [showInput]="false"></app-header>
+
+<div *ngIf="user" class="user-details-card">
+  <button (click)="goBack()">Back</button>
+
+  <div class="user-body">
+    <img [src]="user.avatar" alt="User Avatar" class="user-large-image" />
+    <div class="user-info">
+      <p>
+        <strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}
+      </p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>User Id:</strong> {{ user.id }}</p>
+    </div>
   </div>
-</div> -->
+  <p class="user-description">
+    Support: To keep ReqRes free, contributions towards server costs are
+    appreciated!
+  </p>
+</div>

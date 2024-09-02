@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Required for ngModel binding
 
 @Component({
@@ -6,11 +7,11 @@ import { FormsModule } from '@angular/forms'; // Required for ngModel binding
   standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  imports: [FormsModule] // Import FormsModule for ngModel
+  imports: [FormsModule, CommonModule], // Import FormsModule for ngModel
 })
 export class HeaderComponent {
   searchValue: string = '';
-
+  @Input({ required: true }) showInput: boolean = true;
   @Output() searchId = new EventEmitter<number | null>(); // Emit number or null
 
   // Triggered when the search bar input changes
