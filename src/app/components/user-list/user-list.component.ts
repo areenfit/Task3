@@ -67,6 +67,7 @@ export class UserListComponent implements OnInit, OnDestroy {
           this.totalUsers = response.total;
           this.totalPages = Math.ceil(this.totalUsers / this.itemsPerPage);
           this.isLoading = false;
+          this.userService.numOfUsers = this.totalUsers;
         },
         error: (error) => {
           this.errorMessage = 'Failed to fetch users. Please try again later.';
@@ -96,7 +97,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   onItemsPerPageChanged(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1; // Reset to the first page whenever items per page is changed
+    this.currentPage = 1;
     this.fetchUsers();
   }
 

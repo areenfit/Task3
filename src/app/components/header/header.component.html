@@ -1,13 +1,14 @@
-<header *ngIf="showInput">
-  <span><h1>User Dashboard</h1></span>
-  <span>
+<header>
+  <h4>User Dashboard</h4>
+  <div class="input-container" *ngIf="showInput === true">
     <input
-      type="text"
       id="search-bar"
-      name="userId"
-      placeholder="Search by user id ..."
       [(ngModel)]="searchValue"
       (input)="onSearchChange()"
     />
-  </span>
+    <label for="search-bar" [class.active]="searchValue"
+      >Search by user id...</label
+    >
+    <span *ngIf="searchValue" class="clear-icon" (click)="clearInput()">✖</span>
+  </div>
 </header>

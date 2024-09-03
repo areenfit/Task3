@@ -1,7 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',

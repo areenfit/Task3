@@ -19,11 +19,11 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private router: Router // Inject Router for navigation
+    private router: Router 
   ) {}
 
   ngOnInit(): void {
-    const userId = +this.route.snapshot.paramMap.get('id')!; // Get user ID from route
+    const userId = +this.route.snapshot.paramMap.get('id')!; 
     this.userService.getUserById(userId).subscribe({
       next: (response) => {
         this.user = response.data;
@@ -38,6 +38,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/']); // Navigate back to the user list
+    this.router.navigate(['/']);
   }
 }

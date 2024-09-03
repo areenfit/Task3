@@ -10,10 +10,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [UserListComponent, HeaderComponent, RouterOutlet],
 })
 export class AppComponent {
-  // Get a reference to the UserListComponent
   @ViewChild(UserListComponent) userListComponent!: UserListComponent;
 
-  // Handle the search and pass the value to UserListComponent
   handleSearch(id: number | null): void {
     if (this.userListComponent && this.userListComponent.handleSearch) {
       this.userListComponent.handleSearch(id); // Call the handleSearch method in UserListComponent

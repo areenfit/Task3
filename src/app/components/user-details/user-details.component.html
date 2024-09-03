@@ -1,16 +1,24 @@
 <app-header [showInput]="false"></app-header>
 
-<div *ngIf="user" class="user-details-card">
-  <button (click)="goBack()">Back</button>
+<button (click)="goBack()" class="backButton">Back</button>
 
+<div *ngIf="user" class="user-details-card">
+  <div class="user-header">
+    <img [src]="user.avatar" alt="User Avatar" class="avatar" />
+    <div class="user-header-info">
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+      <p>{{ user.email }}</p>
+    </div>
+  </div>
+  <hr />
   <div class="user-body">
     <img [src]="user.avatar" alt="User Avatar" class="user-large-image" />
     <div class="user-info">
       <p>
-        <strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}
+        <strong>Full Name: {{ user.first_name }} {{ user.last_name }}</strong>
       </p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>User Id:</strong> {{ user.id }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>User Id:{{ user.id }}</p>
     </div>
   </div>
   <p class="user-description">
