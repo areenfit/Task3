@@ -1,11 +1,15 @@
 <app-header (searchId)="handleSearch($event)"></app-header>
 
-<div *ngIf="isLoading">
+<div *ngIf="isLoading" class="loading-container">
   <p>Loading users...</p>
+  <img src="loading.gif" alt="Loading" />
 </div>
 
-<div *ngIf="errorMessage" class="error">
-  <p>{{ errorMessage }}</p>
+<div *ngIf="errorMessage" class="error-overlay">
+  <div class="error">
+    <h3>Error Requesting Data</h3>
+    <p>{{ errorMessage }}</p>
+  </div>
 </div>
 
 <div *ngIf="!isLoading && !errorMessage" class="container">
@@ -17,6 +21,7 @@
       [itemsPerPageOptions]="itemsPerPageOptions"
       (pageChanged)="onPageChanged($event)"
       (itemsPerPageChanged)="onItemsPerPageChanged($event)"
+      class="pagination"
     >
     </app-pagination>
 

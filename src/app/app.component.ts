@@ -14,7 +14,7 @@ export class AppComponent {
 
   handleSearch(id: number | null): void {
     if (this.userListComponent && this.userListComponent.handleSearch) {
-      this.userListComponent.handleSearch(id); // Call the handleSearch method in UserListComponent
+      this.userListComponent.handleSearch(id);
     }
   }
 }
