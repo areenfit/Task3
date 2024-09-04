@@ -10,20 +10,15 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule, CommonModule],
 })
 export class HeaderComponent {
-  searchValue: string = '';
+  searchValue: number | null = null;
   @Input() showInput: boolean = true;
   @Output() searchId = new EventEmitter<number | null>();
 
-  onSearchChange() {
-    const id = parseInt(this.searchValue, 10);
-    if (!isNaN(id)) {
-      this.searchId.emit(id);
-    } else {
-      this.searchId.emit(null);
-    }
+  onSearch() {
+    this.searchId.emit(this.searchValue);
   }
   clearInput() {
-    this.searchValue = '';
-    this.onSearchChange();
+    this.searchValue = null;
+    this.onSearch();
   }
 }

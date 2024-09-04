@@ -7,7 +7,7 @@
 }
 
 .pagination-controls button {
-  margin: 0 20px;
+  margin: 0 0px;
   background-color: transparent;
   font-weight: bolder;
   font-size: large;
@@ -38,11 +38,11 @@ select {
 @media (max-width: 600px) {
   .pagination-controls {
     flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
   }
 
-  .pagination-controls button {
-    margin: 10px 0;
-  }
+
 
   .controls {
     margin-right: 0;

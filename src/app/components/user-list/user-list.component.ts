@@ -7,7 +7,6 @@ import { UserComponent } from '../user/user.component';
 import { UserDetailsComponent } from '../user-details/user-details.component';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
@@ -21,7 +20,6 @@ import { HeaderComponent } from '../header/header.component';
     UserDetailsComponent,
     PaginationComponent,
     FormsModule,
-    RouterOutlet,
     HeaderComponent,
   ],
 })

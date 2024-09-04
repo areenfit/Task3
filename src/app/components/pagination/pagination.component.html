@@ -3,9 +3,9 @@
   <select
     id="items-per-page"
     [(ngModel)]="itemsPerPage"
-    (change)="onItemsPerPageChange(itemsPerPage)"
+    (change)="onItemsPerPageChange()"
   >
-    <option *ngFor="let option of itemsPerPageOptions" [value]="option">
+    <option *ngFor="let option of itemsPerPageOptions" >
       {{ option }}
     </option>
   </select>

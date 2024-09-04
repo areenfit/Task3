@@ -14,7 +14,7 @@ export class PaginationComponent {
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 1;
   @Input() itemsPerPage: number = 5;
-  @Input() numberOfUsers: any = 0;
+  @Input() numberOfUsers: number = 0;
   @Input() itemsPerPageOptions: number[] = [5, 10, 15];
   @Output() pageChanged = new EventEmitter<number>();
   @Output() itemsPerPageChanged = new EventEmitter<number>();
@@ -29,8 +29,8 @@ export class PaginationComponent {
     }
   }
 
-  onItemsPerPageChange(itemsPerPage: number): void {
-    this.itemsPerPageChanged.emit(itemsPerPage);
+  onItemsPerPageChange(): void {
+    this.itemsPerPageChanged.emit(this.itemsPerPage);
   }
   getMaxPerPage() {
     return Math.min(this.numberOfUsers, this.currentPage * this.itemsPerPage);
