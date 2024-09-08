@@ -1,27 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { CommonModule } from '@angular/common';
 import { Subscription, throwError } from 'rxjs';
-import { catchError, map, delay } from 'rxjs/operators';
-import { UserComponent } from '../user/user.component';
-import { UserDetailsComponent } from '../user-details/user-details.component';
-import { PaginationComponent } from '../pagination/pagination.component';
-import { FormsModule } from '@angular/forms';
-import { HeaderComponent } from '../header/header.component';
+import { catchError, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-list',
-  standalone: true,
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
-  imports: [
-    CommonModule,
-    UserComponent,
-    UserDetailsComponent,
-    PaginationComponent,
-    FormsModule,
-    HeaderComponent,
-  ],
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: any[] = [];
@@ -50,9 +35,7 @@ export class UserListComponent implements OnInit, OnDestroy {
       .getUsers(this.currentPage, this.itemsPerPage)
       .pipe(
         delay(1000),
-        map((response) => response),
         catchError((error) => {
-          console.error('Error fetching users:', error);
           this.errorMessage = 'Failed to fetch users. Please try again later.';
           this.isLoading = false;
           return throwError(() => new Error('Failed to fetch users'));
@@ -80,10 +63,6 @@ export class UserListComponent implements OnInit, OnDestroy {
     } else {
       this.filteredUsers = [...this.users];
     }
-  }
-
-  selectUser(user: any): void {
-    this.selectedUser = user;
   }
 
   onPageChanged(page: number): void {
