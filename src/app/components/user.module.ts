@@ -4,8 +4,8 @@ import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HeaderModule } from './shared-header.module';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +13,9 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     UserDetailsComponent,
     PaginationComponent,
     UserComponent,
+    HeaderComponent,
   ],
-  imports: [CommonModule, FormsModule, HeaderModule],
+  imports: [CommonModule, FormsModule],
   exports: [UserListComponent, UserDetailsComponent],
 })
 export class UserModule {}
