@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HeaderComponent } from './header/header.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent,
   ],
   imports: [CommonModule, FormsModule],
+  providers: [UserService],
   exports: [UserListComponent, UserDetailsComponent],
 })
 export class UserModule {}

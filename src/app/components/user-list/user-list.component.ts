@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../user.service';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
 import { User } from '../user.model';
@@ -34,14 +34,6 @@ export class UserListComponent implements OnInit, OnDestroy {
 
     this.userSubscription = this.userService
       .getUsers(this.currentPage, this.itemsPerPage)
-      .pipe(
-        delay(1000),
-        catchError((error) => {
-          this.errorMessage = 'Failed to fetch users. Please try again later.';
-          this.isLoading = false;
-          return throwError(() => new Error('Failed to fetch users'));
-        })
-      )
       .subscribe({
         next: (response) => {
           this.users = response.data;
