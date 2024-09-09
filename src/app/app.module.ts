@@ -6,28 +6,18 @@ import { RouterModule } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
-import { UserComponent } from './components/user/user.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { routes } from './app.routes';
 import { UserService } from './services/user.service';
+import { UserModule } from './components/user.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    PaginationComponent,
-    UserComponent,
-    UserListComponent,
-    UserDetailsComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    FormsModule,
-    CommonModule,
+    // FormsModule,
+    // CommonModule,
     RouterModule.forRoot(routes),
+    UserModule,
   ],
   providers: [provideHttpClient(), provideRouter(routes), UserService],
   bootstrap: [AppComponent],

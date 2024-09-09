@@ -5,14 +5,14 @@
     [(ngModel)]="itemsPerPage"
     (change)="onItemsPerPageChange()"
   >
-    <option *ngFor="let option of itemsPerPageOptions" >
+    <option *ngFor="let option of itemsPerPageOptions">
       {{ option }}
     </option>
   </select>
 
   <span>
-    {{ (currentPage - 1) * itemsPerPage + 1 }} -
-    {{ getMaxPerPage()  }} of {{numberOfUsers}}
+    {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ getMaxPerPage() }} of
+    {{ numberOfUsers }}
   </span>
   <button
     (click)="onPageChange(currentPage - 1)"
