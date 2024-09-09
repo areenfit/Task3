@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-user-details',
@@ -8,7 +9,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./user-details.component.css'],
 })
 export class UserDetailsComponent implements OnInit {
-  user: any = null;
+  user: User | null = null;
   isLoading = true;
   errorMessage: string | null = null;
 

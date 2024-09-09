@@ -1,12 +1,13 @@
 import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../components/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  @Input() user: any;
+  @Input() user!: User;
   @Input() numOfUsers: number = 0;
   private apiUrl = 'https://reqres.in/api/users';
 

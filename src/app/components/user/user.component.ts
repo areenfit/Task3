@@ -1,5 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-user',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-  @Input() user: any;
+  @Input() user!: User;
 
   constructor(private router: Router) {}
 

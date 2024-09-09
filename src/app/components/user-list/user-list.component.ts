@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -9,9 +10,9 @@ import { catchError, delay } from 'rxjs/operators';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  users: any[] = [];
-  filteredUsers: any[] = [];
-  selectedUser: any = null;
+  users: User[] = [];
+  filteredUsers: User[] = [];
+  selectedUser: User | null = null;
   isLoading = true;
   errorMessage: string | null = null;
   itemsPerPage = 5;
