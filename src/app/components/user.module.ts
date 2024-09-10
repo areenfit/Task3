@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from './user.service';
+import { RouterModule } from '@angular/router';
+import { routes } from '../app.routes';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { UserService } from './user.service';
     UserComponent,
     HeaderComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [UserService],
   exports: [UserListComponent, UserDetailsComponent],
 })
