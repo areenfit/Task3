@@ -9,7 +9,6 @@ import { User } from './user.model';
 export class UserService {
   @Input() user!: User;
   @Input() numOfUsers: number = 0;
-  @Input() viewButtonClicked: boolean = false;
 
   private apiUrl = 'https://reqres.in/api/users';
 

@@ -14,7 +14,6 @@ export class UserComponent {
   constructor(private router: Router, private userService: UserService) {}
 
   viewDetails() {
-    this.userService.viewButtonClicked = true;
     this.router.navigate(['/users', this.user.id]);
     console.log(this.user);
   }
