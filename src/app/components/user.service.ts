@@ -1,6 +1,6 @@
 import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from './user.model';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { User } from './user.model';
 export class UserService {
   @Input() user!: User;
   @Input() numOfUsers: number = 0;
+  @Input() nextId: any = 0;
 
   private apiUrl = 'https://reqres.in/api/users';
 
@@ -27,4 +28,9 @@ export class UserService {
   setUser(user: any) {
     this.user = user;
   }
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(this.apiUrl, user);
+  }
+
+  
 }

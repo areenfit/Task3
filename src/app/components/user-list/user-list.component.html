@@ -1,4 +1,3 @@
-@if(showParentContent){
 <app-header (searchId)="handleSearch($event)"></app-header>
 
 <div *ngIf="isLoading" class="loading-container">
@@ -30,6 +29,7 @@
       <app-user *ngFor="let user of filteredUsers" [user]="user"></app-user>
     </ul>
   </div>
-</div>}
+  <button class="add-user-button" (click)="onAddUser()">Add User</button>
+</div>
 
 <router-outlet></router-outlet>

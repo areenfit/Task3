@@ -1,4 +1,5 @@
 export interface User {
+  data: User[];
   id: number;
   avatar: string;
   first_name: string;

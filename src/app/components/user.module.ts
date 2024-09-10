@@ -3,12 +3,13 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from './user.service';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app.routes';
+import { NewUserComponent } from './new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,14 @@ import { routes } from '../app.routes';
     PaginationComponent,
     UserComponent,
     HeaderComponent,
+    NewUserComponent,
   ],
-  imports: [CommonModule, FormsModule, RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+  ],
   providers: [UserService],
   exports: [UserListComponent, UserDetailsComponent],
 })

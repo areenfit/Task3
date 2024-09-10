@@ -1,0 +1,55 @@
+/* Container for the form */
+form {
+    max-width: 600px; /* Limit the width of the form */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px; /* Add padding inside the form */
+    border: 1px solid #ddd; /* Add a border around the form */
+    border-radius: 8px; /* Round the corners of the form */
+    background-color: #f9f9f9; /* Light background color */
+  }
+  
+  /* Style for form labels */
+  label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 8px; /* Add space below labels */
+    font-weight: bold; /* Make label text bold */
+  }
+  
+  /* Style for form inputs */
+  input {
+    width: 100%; /* Make inputs take full width of their container */
+    padding: 10px; /* Add padding inside the inputs */
+    margin-bottom: 16px; /* Add space below inputs */
+    border: 1px solid #ccc; /* Light border color for inputs */
+    border-radius: 4px; /* Round the corners of the inputs */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  /* Style for validation messages */
+  div {
+    color: #e74c3c; /* Red color for error messages */
+    font-size: 0.875em; /* Slightly smaller font size for error messages */
+  }
+  
+  /* Style for the submit button */
+  button {
+    padding: 10px 20px; /* Add padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Round the corners of the button */
+    background-color: #3498db; /* Blue background color */
+    color: #fff; /* White text color */
+    font-size: 1em; /* Set font size for the button text */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  /* Button hover state */
+  button:hover {
+    background-color: #2980b9; /* Darker blue for hover state */
+  }
+  
+  button:disabled {
+    background-color: #95a5a6; 
+    cursor: not-allowed; /* Change cursor to not-allowed when button is disabled */
+  }
+  

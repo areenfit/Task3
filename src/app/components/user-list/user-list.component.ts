@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
-import { filter, Subscription, throwError } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { User } from '../user.model';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -10,7 +10,6 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  showParentContent = true;
   users: User[] = [];
   filteredUsers: User[] = [];
   selectedUser: User | null = null;
@@ -22,22 +21,12 @@ export class UserListComponent implements OnInit, OnDestroy {
   totalPages = 0;
   itemsPerPageOptions = [5, 10, 15];
   private userSubscription!: Subscription;
-  private routerSubscription!: Subscription; 
+  private routerSubscription!: Subscription;
 
-  constructor(
-    private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchUsers();
-
-    this.routerSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.showParentContent = !this.route.firstChild;
-      });
   }
 
   fetchUsers(): void {
@@ -90,5 +79,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     if (this.routerSubscription) {
       this.routerSubscription.unsubscribe();
     }
+  }
+
+  onAddUser() {
+    this.router.navigate(['/users/add']);
   }
 }
