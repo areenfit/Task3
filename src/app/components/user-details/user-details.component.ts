@@ -13,6 +13,7 @@ export class UserDetailsComponent implements OnInit {
   user: User | null = null;
   isLoading = true;
   errorMessage: string | null = null;
+  userId: number | null = null; // Add this property
 
   constructor(
     private route: ActivatedRoute,
@@ -22,8 +23,8 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userId = +this.route.snapshot.paramMap.get('id')!;
-    this.userService.getUserById(userId).subscribe({
+    this.userId = +this.route.snapshot.paramMap.get('id')!;
+    this.userService.getUserById(this.userId).subscribe({
       next: (response) => {
         this.user = response.data;
         this.isLoading = false;
@@ -34,6 +35,10 @@ export class UserDetailsComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  onEditUser(): void {
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
   goBack(): void {

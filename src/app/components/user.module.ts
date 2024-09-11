@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserService } from './user.service';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app.routes';
-import { NewUserComponent } from './new-user/new-user.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { NewUserComponent } from './new-user/new-user.component';
     PaginationComponent,
     UserComponent,
     HeaderComponent,
-    NewUserComponent,
+    FormComponent,
   ],
   imports: [
     CommonModule,

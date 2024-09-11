@@ -1,16 +1,14 @@
-<h2>Add New User</h2>
 <button (click)="goBack()" class="backButton">Back</button>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="avatar">Avatar URL:</label>
-    <input id="avatar" formControlName="avatar" type="text" />
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" type="email" />
     <div
-      *ngIf="userForm.get('avatar')?.invalid && userForm.get('avatar')?.touched"
+      *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
     >
-      Avatar URL is required.
+      A valid email is required.
     </div>
   </div>
-
   <div>
     <label for="first_name">First Name:</label>
     <input id="first_name" formControlName="first_name" type="text" />
@@ -37,14 +35,16 @@
   </div>
 
   <div>
-    <label for="email">Email:</label>
-    <input id="email" formControlName="email" type="email" />
+    <label for="avatar">Avatar URL:</label>
+    <input id="avatar" formControlName="avatar" type="text" />
     <div
-      *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+      *ngIf="userForm.get('avatar')?.invalid && userForm.get('avatar')?.touched"
     >
-      A valid email is required.
+      Avatar URL is required.
     </div>
   </div>
 
-  <button type="submit" [disabled]="userForm.invalid" (click)="onSubmit()">Add User</button>
+  <button type="submit" [disabled]="userForm.invalid">
+    {{ isEditing ? 'Update User' : 'Add User' }}
+  </button>
 </form>

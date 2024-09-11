@@ -21,7 +21,6 @@ export class UserListComponent implements OnInit, OnDestroy {
   totalPages = 0;
   itemsPerPageOptions = [5, 10, 15];
   private userSubscription!: Subscription;
-  private routerSubscription!: Subscription;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -33,55 +32,57 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.errorMessage = null;
 
-    this.userSubscription = this.userService
-      .getUsers(this.currentPage, this.itemsPerPage)
-      .subscribe({
-        next: (response) => {
-          this.users = response.data;
-          this.filteredUsers = [...this.users];
-          this.totalUsers = response.total;
-          this.totalPages = Math.ceil(this.totalUsers / this.itemsPerPage);
-          this.isLoading = false;
-          this.userService.numOfUsers = this.totalUsers;
-        },
-        error: (error) => {
-          this.errorMessage = 'Failed to fetch users. Please try again later.';
-          this.isLoading = false;
-        },
-      });
+    this.userSubscription = this.userService.getAllUsers().subscribe({
+      next: (response) => {
+        this.users = response.data;
+        this.totalUsers = this.users.length;
+        this.totalPages = Math.ceil(this.totalUsers / this.itemsPerPage);
+        this.updateFilteredUsers();
+        this.isLoading = false;
+        this.userService.numOfUsers = this.totalUsers;
+      },
+      error: () => {
+        this.errorMessage = 'Failed to fetch users. Please try again later.';
+        this.isLoading = false;
+      },
+    });
   }
 
   handleSearch(id: number | null): void {
-    if (id !== null) {
-      this.filteredUsers = this.users.filter((user) => user.id === id);
-    } else {
-      this.filteredUsers = [...this.users];
-    }
+    this.updateFilteredUsers(id);
   }
 
   onPageChanged(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.fetchUsers();
+      this.updateFilteredUsers();
     }
   }
 
   onItemsPerPageChanged(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
     this.currentPage = 1;
-    this.fetchUsers();
+    this.updateFilteredUsers();
+  }
+
+  updateFilteredUsers(searchId: number | null = null): void {
+    const filtered = this.users.filter(user => 
+      searchId === null || user.id === searchId
+    );
+
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.filteredUsers = filtered.slice(start, end);
+    console.log(this.filteredUsers);
   }
 
   ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
   }
 
-  onAddUser() {
+  onAddUser(): void {
     this.router.navigate(['/users/add']);
   }
 }

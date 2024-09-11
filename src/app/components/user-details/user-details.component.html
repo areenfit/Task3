@@ -1,6 +1,7 @@
 <app-header [showInput]="false"></app-header>
 
 <button (click)="goBack()" class="backButton">Back</button>
+<button (click)="onEditUser()" class="editButton">Edit</button>
 
 <div *ngIf="user" class="user-details-card">
   <div class="user-header">
@@ -26,3 +27,4 @@
     appreciated!
   </p>
 </div>
+<router-outlet></router-outlet>
